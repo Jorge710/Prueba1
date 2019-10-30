@@ -35,4 +35,9 @@ public class MainActivity extends AppCompatActivity {
         Intent act35 = new Intent(this, activity_35.class);
         startActivity(act35);
     }
+
+    public void activity39(View view){
+        Intent act39 = new Intent(this, activity_39.class);
+        startActivity(act39);
+    }
 }
