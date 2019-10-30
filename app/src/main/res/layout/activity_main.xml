@@ -54,15 +54,16 @@
             android:text="39 - Evento touch: Dibujar un circulo" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn48"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:onClick="activity48"
+            android:text="48 - Agregar y eliminar elementos de un ListView" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btn50"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="50 - Tomar una foto y grabarla en un archivo (mediante Intent)" />
     </LinearLayout>
 </ScrollView>

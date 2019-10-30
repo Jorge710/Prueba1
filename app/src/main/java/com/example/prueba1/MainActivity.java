@@ -40,4 +40,9 @@ public class MainActivity extends AppCompatActivity {
         Intent act39 = new Intent(this, activity_39.class);
         startActivity(act39);
     }
+
+    public void activity48(View view){
+        Intent act48 = new Intent(this, activity_48.class);
+        startActivity(act48);
+    }
 }
