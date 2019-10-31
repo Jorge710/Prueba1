@@ -23,6 +23,7 @@
             android:id="@+id/btn15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="activity15"
             android:text="15 - Almacenamiento de datos en un archivo de texto localizado en una tarjeta SD" />
 
         <Button

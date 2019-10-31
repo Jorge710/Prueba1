@@ -8,8 +8,8 @@
 
     <EditText
         android:id="@+id/et1"
-        android:layout_width="255dp"
-        android:layout_height="37dp"
+        android:layout_width="252dp"
+        android:layout_height="52dp"
         android:ems="10"
         android:hint="Escribe el nombre del archivo"
         android:inputType="textPersonName"
@@ -17,12 +17,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.038" />
+        app:layout_constraintVertical_bias="0.085" />
 
     <EditText
-        android:id="@+id/editText3"
-        android:layout_width="255dp"
-        android:layout_height="433dp"
+        android:id="@+id/et2"
+        android:layout_width="244dp"
+        android:layout_height="390dp"
         android:background="#4CAF50"
         android:ems="10"
         android:gravity="start|top"
