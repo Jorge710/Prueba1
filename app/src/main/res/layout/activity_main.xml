@@ -67,5 +67,12 @@
             android:layout_height="wrap_content"
             android:onClick="activity50"
             android:text="50 - Tomar una foto y grabarla en un archivo (mediante Intent)" />
+
+        <Button
+            android:id="@+id/btnProyecto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="activityLogin"
+            android:text="Mini Proyecto" />
     </LinearLayout>
 </ScrollView>

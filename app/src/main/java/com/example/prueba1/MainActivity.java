@@ -55,4 +55,9 @@ public class MainActivity extends AppCompatActivity {
         Intent act50 = new Intent(this, activity_50.class);
         startActivity(act50);
     }
+
+    public void activityLogin(View view){
+        Intent actpro = new Intent(this, activity_Login.class);
+        startActivity(actpro);
+    }
 }
