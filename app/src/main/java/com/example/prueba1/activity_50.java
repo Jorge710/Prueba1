@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +34,7 @@ public class activity_50 extends AppCompatActivity {
     private static final int TAKE_PICTURE = 0;
     public Uri imageUri;
 
+
     @RequiresApi(api = Build.VERSION_CODES.N)
 
     @Override
@@ -43,48 +45,32 @@ public class activity_50 extends AppCompatActivity {
         imagen1=(ImageView)findViewById(R.id.imageView);
         et1=(EditText)findViewById(R.id.editText);
 
-
     }
+
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
-    String currentPhotoPath;
+    public void dispatchTakePictureIntent(View v) {
+        //solucion del error de camara en el ejercicio 50
+        //No es la forma correcta de resolver esto, esto básicamente eliminará las
+        //políticas de modo estricto. e ignorará la advertencia de seguridad
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+        // fin de eliminacion del politicas
 
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
-
-        // Save a file: path for use with ACTION_VIEW intents
-        currentPhotoPath = image.getAbsolutePath();
-        return image;
+        Intent intento1 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (intento1.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intento1, REQUEST_IMAGE_CAPTURE);
+            File foto = new File(getExternalFilesDir(null), et1.getText().toString());
+            intento1.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(foto));
+            startActivity(intento1);
+        }
     }
 
     public void tomarFoto(View v) {
-
         Intent intento1 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        File photo = new File(Environment.getExternalStorageDirectory(), et1.getText().toString());
-        intento1.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photo));
-        imageUri = Uri.fromFile(photo); //CAMBIAR
-
-        try {
-            startActivity(intento1);
-        } catch (Exception e) {
-            Toast.makeText(this, "Error al abrir la cámara:"+e.toString(), Toast.LENGTH_SHORT).show();
-            Log.e("Cámara ", e.toString());
-        }
-
-          /*Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-            }
-        */
-
+        File foto = new File(getExternalFilesDir(null), et1.getText().toString());
+        intento1.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(foto));
+        startActivity(intento1);
     }
 
     public void recuperarFoto(View v) {
